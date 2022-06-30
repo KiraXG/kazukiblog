@@ -110,6 +110,7 @@ export default {
         width: 100%;
         height: 75px;
         top: -65px;
+        overflow-x: hidden;
         .wave1 {
             position: absolute;
             width: 4000%;
