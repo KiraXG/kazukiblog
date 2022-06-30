@@ -109,13 +109,12 @@ export default {
         position: relative;
         width: 100%;
         height: 75px;
-        top: -65px;
+        top: -75px;
         overflow-x: hidden;
         .wave1 {
             position: absolute;
             width: 4000%;
             height: 75px;
-            bottom: 10px;
             background: url("@/assets/imgs/wave2.png");
             opacity: 0.5;
         }
@@ -123,6 +122,7 @@ export default {
             position: absolute;
             width: 4000%;
             height: 65px;
+            top: 10px;
             background: url("@/assets/imgs/wave2.png");
         }
     }
