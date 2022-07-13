@@ -1,6 +1,6 @@
 <template>
     <div class="layout-nav">
-        <div class="left" :class="leftActive">胡小乖</div>
+        <div class="left" :class="leftActive" @click="toHome">胡小乖</div>
         <div class="nav" :class="navActive">
             <ul class="nav-content" :class="navItemActive">
                 <li v-for="item in nav" :key="item.id" @click="handleChange(item)">
@@ -52,6 +52,13 @@ export default {
             },
         };
     },
+    watch: {
+        curId: {
+            handler(n) {
+                console.log(n);
+            },
+        },
+    },
     created() {},
     mounted() {
         window.addEventListener("scroll", this.navShow);
@@ -59,6 +66,9 @@ export default {
     },
     methods: {
         init() {
+            this.scrollTopLength = 0;
+            this.curId = "home";
+            this.navShow();
             this.navActive = {
                 navShow: false,
                 navHide: true,
@@ -142,6 +152,13 @@ export default {
                 this.navActive.navShadow = false;
             }
         },
+        toHome() {
+            if (this.curId !== "home") {
+                this.$router.push("/home");
+                this.curId = "home";
+                this.navShow();
+            }
+        },
     },
 };
 </script>
@@ -159,6 +176,7 @@ export default {
         justify-content: center;
         align-items: center;
         z-index: 100;
+        cursor: pointer;
     }
     .leftActive {
         animation: left 1s;
@@ -184,15 +202,15 @@ export default {
         z-index: 100;
         .iconfont,
         .iconfont::before {
-            color: rgb(88, 88, 88);
+            color: #303133;
             font-size: 35px;
         }
         .icon-sousuo:hover::before {
-            color: #fe9600;
+            color: #409eff;
             cursor: pointer;
         }
         .icon-yonghu-yuan:hover::before {
-            color: rgb(209, 107, 70);
+            color: #409eff;
             cursor: pointer;
         }
     }
@@ -232,12 +250,13 @@ export default {
                 width: 150px;
                 height: 100%;
                 font-size: 18px;
+                color: #303133;
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
             .nav-item:hover {
-                color: #fe9600;
+                color: #409eff;
                 cursor: pointer;
                 .iconfont,
                 .iconfont::before {
@@ -283,7 +302,7 @@ export default {
                 height: 6px;
                 position: absolute;
                 bottom: 0;
-                background-color: #fe9600;
+                background-color: #409eff;
                 transition: all 0.3s ease-in-out;
             }
             .nav-item:hover::after {
@@ -319,7 +338,7 @@ export default {
         opacity: 0;
     }
     .navShadow {
-        box-shadow: 0 1px 40px -8px rgb(0 0 0 / 50%);
+        box-shadow: 0 1px 40px -8px rgba(0, 0, 0, 0.2);
     }
 }
 .layout-nav:hover {

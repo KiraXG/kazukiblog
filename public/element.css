@@ -1,21 +1,98 @@
-body::-webkit-scrollbar {
-    width: 8px;
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 5px;
 }
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     border-radius: 16px;
-    -webkit-box-shadow: inset 0 0 5px rgb(255, 200, 87);
-    background: rgb(253, 137, 27);
+    background: rgb(102, 177, 255);
+    box-shadow: inset 0 0 3px rgb(121, 187, 255);
 }
-body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(64, 158, 255);
+    box-shadow: inset 0 0 3px rgb(83, 168, 255);
+}
+::-webkit-scrollbar-track {
     border-radius: 0;
+    -box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
+
+/* element-ui */
+.el-dropdown-menu {
+    display: flex;
+    flex-wrap: wrap;
+}
+.el-dropdown-menu__item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    /* line-height: 0; */
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: #606266;
+    cursor: pointer;
+    outline: 0;
+}
+.el-popper {
+    width: 210px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 阿里巴巴图标库 */
 .iconfont,
 .iconfont::before {
     display: inline-block;
     padding-top: 1px;
     font-size: 18px;
 }
+
+/* layout-nav */
 .navName {
     margin-left: 5px;
 }
+
+/* home */
+.dropdownItem {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* padding: 5px; */
+}
+.color-select {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.el-color-picker__trigger,
+.el-color-picker__color,
+.el-color-picker__color-inner {
+    border-radius: 50%;
+}
+.el-color-picker__color-inner {
+    margin: -1px;
+}
+/* .el-color-picker__icon::before {
+    content: "C";
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 600px;
+    font-size: 20px;
+    font-weight: bolder;
+    background-image: linear-gradient(0deg, #fff 0%, #fff 50%, transparent 50.1%);
+    background-position: 100% 100%;
+    background-size: 100% 0%;
+    cursor: pointer;
+    -webkit-text-stroke-color: #303133;
+    -webkit-text-stroke-width: 0.05em;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-repeat: no-repeat;
+} */

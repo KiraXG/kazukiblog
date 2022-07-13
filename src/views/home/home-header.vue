@@ -1,6 +1,6 @@
 <template>
     <div class="home-header">
-        <!-- <div class="bg"></div> -->
+        <div class="bg" :style="headerBgChange"></div>
         <!-- <div class="point"></div> -->
         <div class="home-header-content">
             <div class="header-content">
@@ -21,18 +21,28 @@
 export default {
     name: "xgHeader",
     data() {
-        return {};
+        return {
+            headerBgChange: {
+                background: "url(" + require(`../../assets/imgs/bg${Math.floor(Math.random() * 10)}.png`) + ")",
+                backgroundSize: "cover",
+                // backgroundPosition: "center"
+            },
+        };
     },
     created() {},
     mounted() {
         this.waveMove();
-        document.getElementsByClassName("home-header")[0].style.height = window.innerHeight + "px";
+        this.$nextTick(() => {
+            document.getElementsByClassName("home-header")[0].style.height = window.innerHeight + "px";
+        });
         // 监听页面缩放
         window.addEventListener("resize", this.homeHeaderHeight);
     },
     methods: {
         homeHeaderHeight() {
-            document.getElementsByClassName("home-header")[0].style.height = window.innerHeight + "px";
+            this.$nextTick(() => {
+                document.getElementsByClassName("home-header")[0].style.height = window.innerHeight + "px";
+            });
         },
         toMain() {
             let scrollTopLength = document.body.scrollTop || document.documentElement.scrollTop;
@@ -58,7 +68,7 @@ export default {
                 wave1.style.left = waveMove1 + "px";
                 waveMove2 -= 0.1;
                 wave2.style.left = waveMove2 + "px";
-            }, 1 / 12);
+            }, 1);
         },
     },
 };
@@ -109,7 +119,7 @@ export default {
         position: relative;
         width: 100%;
         height: 75px;
-        top: -75px;
+        top: -74px;
         overflow-x: hidden;
         .wave1 {
             position: absolute;
@@ -117,35 +127,36 @@ export default {
             height: 75px;
             background: url("@/assets/imgs/wave2.png");
             opacity: 0.5;
+            animation: wave1 6000s linear infinite;
+            @keyframes wave1 {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-4000px);
+                }
+            }
         }
         .wave2 {
             position: absolute;
             width: 4000%;
             height: 65px;
             top: 10px;
-            background: url("@/assets/imgs/wave2.png");
+            background: url("@/assets/imgs/wave1.png");
+            animation: wave2 6000s linear infinite;
+            @keyframes wave2 {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-4000px);
+                }
+            }
         }
     }
     // 伪类添加背景图
-    .home-header-content::before {
-        content: "";
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background: url("@/assets/imgs/bg.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        z-index: -100;
-    }
-    .header-content::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/dot.gif");
-        z-index: -99;
-    }
-    // .bg {
+    // .home-header-content::before {
+    //     content: "";
     //     position: fixed;
     //     width: 100%;
     //     height: 100%;
@@ -154,6 +165,23 @@ export default {
     //     background-repeat: no-repeat;
     //     z-index: -100;
     // }
+    .header-content::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url("https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/images/dot.gif");
+        z-index: -99;
+    }
+    .bg {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        // background: url("@/assets/imgs/bg.jpg");
+        // background-size: cover;
+        background-repeat: no-repeat;
+        z-index: -100;
+    }
     // .point {
     //     position: fixed;
     //     width: 100%;

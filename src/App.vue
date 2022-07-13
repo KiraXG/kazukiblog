@@ -33,9 +33,9 @@ export default {
     watch: {
         scrollTopLength() {
             this.$nextTick(() => {
-                this.progressBar()
-            })
-        }
+                this.progressBar();
+            });
+        },
     },
     created() {},
     mounted() {
@@ -69,11 +69,11 @@ export default {
             }, 1);
         },
         progressBar() {
-            let scrollWidth = document.body.scrollWidth
-            let scrollHeight = document.body.scrollHeight
-            let innerHeight = window.innerHeight
-            document.getElementsByClassName('progress-bar')[0].style.width = (this.scrollTopLength / (scrollHeight - innerHeight)) * scrollWidth + 'px'
-        }
+            let scrollWidth = document.body.scrollWidth;
+            let scrollHeight = document.body.scrollHeight;
+            let innerHeight = window.innerHeight;
+            document.getElementsByClassName("progress-bar")[0].style.width = (this.scrollTopLength / (scrollHeight - innerHeight)) * scrollWidth + "px";
+        },
     },
 };
 </script>
@@ -86,7 +86,7 @@ export default {
     .progress-bar {
         position: fixed;
         height: 5px;
-        background-color: #fe9600;
+        background-color: rgb(72, 157, 255);
         z-index: 101;
     }
     .live2d {
@@ -122,6 +122,5 @@ export default {
     .to-top-hide {
         top: -900px;
     }
-    
 }
 </style>
