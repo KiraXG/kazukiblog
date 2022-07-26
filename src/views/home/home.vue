@@ -47,7 +47,7 @@ export default {
                 { color: "#EE82EE", style: { background: "#EE82EE" } }, // violet
             ],
             themeShow: false,
-            color: JSON.parse(sessionStorage.getItem("bg")) || "#87CEFA",
+            color: "",
         };
     },
     watch: {
@@ -104,10 +104,11 @@ export default {
         },
         setBg() {
             document.getElementsByClassName("home-content")[0].style.background = JSON.parse(sessionStorage.getItem("bg"));
-            this.color = JSON.parse(sessionStorage.getItem("bg"))
+            this.color = JSON.parse(sessionStorage.getItem("bg")) || "#87CEFA"
         },
         setBgColor(color) {
             document.getElementsByClassName("home-content")[0].style.background = color;
+            sessionStorage.setItem("bg", JSON.stringify(color));
         },
     },
 };
